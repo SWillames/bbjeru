@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>BotiqueFinal</title>
+	  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+
+		<div class="row-fluid">
+			<div class="row-fuid">
+				<ul class="thumbnails">
+					<li class="span4">
+						<a href="/clients" class="thumbnail inner-border">Clients
+
+							<%= image_tag "img1.png", size: "150x150" %>
+						</a>
+					</li>
+					<li class="span4">
+						<a href="/products" class="thumbnail inner-border" >Products
+							<span></span>
+							<%= image_tag "images.jpg", size: "147x147" %>
+						</a>
+					</li>
+					<li class="span4">
+						<a href="/ocupacaos" class="thumbnail inner-border">Vendas
+							<span></span>
+							<%= image_tag "img3.png", size: "150x150" %>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+            <div id="content" class=" container form-signin">
+            	<%= yield %>
+            </div>
+
+		<footer id="footer">
+        	   <center>
+           			<span class="copyright">&copy; 9Soluções &nbsp; 2016</span>
+        	   </center>
+    	</footer>
+	</body>
+</html>
