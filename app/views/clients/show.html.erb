@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<panel>
+	<h2>Client: <%= @client.name %></h2>
+	<ul>
+		<li>CPF: <%= @client.cpf %></li>
+		<li>Location: <%= @client.location%></li>
+		<li>Salary: <%= @client.salary%></li>
+	</ul>
+
+	<%= link_to "Edit", edit_client_path(@client) %>
+	<%= link_to "Home", root_path %>
+</panel>
