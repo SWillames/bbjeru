@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: sergio
+  pool: 5
+
+development:
+  <<: *default
+  database: botique_final_development
+
+test:
+  <<: *default
+  database: botique_final_test
+
+production:
+  <<: *default
+  database: botique_final_production
+  username: botique_final
+  password: <%= ENV['BOTIQUE_FINAL_DATABASE_PASSWORD'] %>
