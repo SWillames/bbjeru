@@ -7,6 +7,17 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+ .field_with_errors {
+ display: inline;
+ label { color: #B94A48; }
+ input[type=text], input[type=password], textarea {
+ border: 1px solid rgba(189,74,72, 0.5);
+  }
+ }
+ .error_message {
+ margin-left: 5px;
+ display: inline;
+ color: #B94A48;}
 
 article,
 aside,
@@ -227,11 +238,11 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #dfdFdF;
 }
 
 a {
-  color: #0088cc;
+  color: #0000FF;
   text-decoration: none;
 }
 

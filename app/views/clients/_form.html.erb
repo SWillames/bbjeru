@@ -1,32 +1,37 @@
 <% if @client.errors.any? %>
 	<div id="error_explanation">
-		<h2>O formulario possui os seguintes erros:</h2>
-		<ul>
-			<% @client.errors.full_messages.each do |message| %>
-				<li><%= message %></li>	
-			<% end %>
-		</ul>
+		<h3>O formulario possui os seguintes erros:</h3>
+
 	</div>
 <% end %>
-<panel>	
+<panel>
 <%= form_for @client do |f| %>
-    <div class="field">  
+    <div class="field">
       <%= f.label :name %>
       <%= f.text_field :name %>
-    </div>  
-    <%= f.label :cpf, "CPF" %>
-    <%= f.text_field :cpf %>
-  
-   
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  
-    <%= f.label :salary %>
-    <%= f.number_field :salary %>
+			<%= error_tag @client, :name %>
+    </div>
+		<div>
+			<%= f.label :cpf, "CPF" %>
+    	<%= f.text_field :cpf %>
+  		<%= error_tag @client, :cpf %>
+		</div>
+
+	 <div class="field">
+		 <%= f.label :location %>
+		 <%= f.text_field :location %>
+		 <%= error_tag @client, :location %>
+	 </div>
+
+		<div class="field">
+			<%= f.label :salary %>
+			<%= f.number_field :salary %>
+			<%= error_tag @client, :salary %>			
+		</div>
   <div class="row">
     <div class="span1 actions">
        <%= f.submit :class => 'btn btn-primary' %>
-    </div>   
+    </div>
   </div>
 <% end %>
 </panel>
