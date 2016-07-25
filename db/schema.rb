@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725194943) do
+ActiveRecord::Schema.define(version: 20160725215805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,16 @@ ActiveRecord::Schema.define(version: 20160725194943) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "products_sales", id: false, force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "sale_id"
+  end
+
+  add_index "products_sales", ["product_id"], name: "index_products_sales_on_product_id", using: :btree
+  add_index "products_sales", ["sale_id"], name: "index_products_sales_on_sale_id", using: :btree
+
   create_table "sales", force: :cascade do |t|
     t.float    "value"
-    t.integer  "product_id"
     t.integer  "client_id"
     t.string   "installments"
     t.datetime "created_at",   null: false
@@ -44,8 +51,8 @@ ActiveRecord::Schema.define(version: 20160725194943) do
   end
 
   add_index "sales", ["client_id"], name: "index_sales_on_client_id", using: :btree
-  add_index "sales", ["product_id"], name: "index_sales_on_product_id", using: :btree
 
+  add_foreign_key "products_sales", "products"
+  add_foreign_key "products_sales", "sales"
   add_foreign_key "sales", "clients"
-  add_foreign_key "sales", "products"
 end

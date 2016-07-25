@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
 	validates_presence_of :name, :mark, :price
-	has_many :sales
-  has_many :clents, through :sales
+	has_and_belongs_to_many :sales
+  #has_many :clients, through: :sales
 end

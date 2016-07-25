@@ -3,5 +3,5 @@ class Client < ActiveRecord::Base
   validates_length_of :cpf, is: 11
   validates_uniqueness_of :cpf
   has_many :sales
-  has_many :products, through :sales
+  has_many :products, through: :sales
 end

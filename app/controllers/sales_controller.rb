@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  #before_action :set_sale, only: [:show, :edit, :update, :destroy]
+  before_action :set_sale, only: [:show, :edit, :update, :destroy]
 
   # GET /sales
   # GET /sales.json
@@ -63,12 +63,12 @@ class SalesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-#    def set_sale
-#      @sale = Sale.find(params[:id])
-#    end
+    def set_sale
+      @sale = Sale.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:value, :product_id ||= [], :client_id )
+      params.require(:sale).permit(:value, product_id: [], :client_id, :installments)
     end
 end
