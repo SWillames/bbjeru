@@ -15,9 +15,15 @@
     <%= f.label :value %><br>
     <%= f.text_field :value %>
   </div>
+  <% for product in Product.find(:all) %>
+  <div>
+    <%= check_box_tag "sale[product_ids][]", product.id, @sale.products.include?(product) %>
+    <%= product.name %>
+  </div>
+<% end %>
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
+    <%= f.text_field :product_ids %>
   </div>
   <div class="field">
     <%= f.label :client_id %><br>

@@ -24,6 +24,7 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    params[:sale][:product_ids] ||= []
     @sale = Sale.new(sale_params)
 
     respond_to do |format|
@@ -69,6 +70,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:value, product_id: [], :client_id, :installments)
+      params.require(:sale).permit(:value,  :client_id, :installments, product_id: [])
     end
 end
