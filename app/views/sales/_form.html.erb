@@ -12,28 +12,35 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :value %><br>
+    <%= f.label :value %>
     <%= f.text_field :value %>
   </div>
-  <% for product in Product.find(:all) %>
-  <div>
+
+  <div class="field">
+    <%= f.label :client_id %>
+    <%= f.select :client_id, Client.all.collect {|c| [c.name, c.id]}, include_blank: true %>
+  </div>
+
+<br/>
+  <%= f.label :products %>
+  <% for product in Product.all %>
+  <div >
     <%= check_box_tag "sale[product_ids][]", product.id, @sale.products.include?(product) %>
-    <%= product.name %>
+    <%= product.name %> -
+    <%= product.price %>
   </div>
-<% end %>
+  <% end %>
+<br/>
+
   <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.text_field :product_ids %>
-  </div>
-  <div class="field">
-    <%= f.label :client_id %><br>
-    <%= f.text_field :client_id %>
-  </div>
-  <div class="field">
-    <%= f.label :installments %><br>
+    <%= f.label :installments %>
     <%= f.text_field :installments %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+
+  <div class="row">
+    <div class="span1 actions">
+       <%= f.submit :class => 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

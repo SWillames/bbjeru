@@ -15,17 +15,17 @@
 
   <tbody>
     <% @sales.each do |sale| %>
-      <tr>
-        <td><%= sale.value %></td>
-        <%  sale.products.each_with_index do |sale, index| %>
-          <td><%= sale.products[index].name%></td>
-        <% end %>
-        <td><%= sale.client.name %></td>
-        <td><%= sale.installments %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= sale.value %></td>
+      <%  sale.products.each do |product| %>
+        <td><%= product.name%></td>
+      <% end %>
+      <td><%= sale.client.name %></td>
+      <td><%= sale.installments %></td>
+      <td><%= link_to 'Show', sale %></td>
+      <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
+      <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

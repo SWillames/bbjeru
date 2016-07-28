@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :sales
-  resources :sales
-  resources :sales
+  resources :sales do
   root 'welcome#index'
   resources :clients
   resources :products
