@@ -17,8 +17,10 @@
     <% @sales.each do |sale| %>
       <tr>
         <td><%= sale.value %></td>
-        <td><%= sale.product %></td>
-        <td><%= sale.client %></td>
+        <%  sale.products.each_with_index do |sale, index| %>
+          <td><%= sale.products[index].name%></td>
+        <% end %>
+        <td><%= sale.client.name %></td>
         <td><%= sale.installments %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
