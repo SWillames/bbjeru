@@ -26,44 +26,35 @@ class SalesController < ApplicationController
   def create
 
     @sale = Sale.new(sale_params)
-
-    respond_to do |format|
+    params[:sale][:product_ids] ||= []
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render :show, status: :created, location: @sale }
+        redirect_to @sale, notice: 'Sale was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
-    respond_to do |format|
+    params[:sale][:product_ids] ||= []
       if @sale.update(sale_params)
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sale }
+        redirect_to @sale, notice: 'Sale was successfully updated.'
+        render :show, status: :ok, location: @sale
       else
-        format.html { render :edit }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
+        render :edit
+        render json: @sale.errors, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /sales/1
   # DELETE /sales/1.json
   def destroy
     @sale.destroy
-    respond_to do |format|
-      format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to sales_url, notice: 'Sale was successfully destroyed.'
   end
 
   def products
-      params[:sale][:product_ids] ||= []
 
       @sales = Sale.all
       @products = Product.all
@@ -79,6 +70,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:value,  :client_id, :installments, product_id: [])
+      params.require(:sale).permit(:value,  :client_id, :installments, product_ids: [])
     end
 end
