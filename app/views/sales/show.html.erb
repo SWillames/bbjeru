@@ -7,12 +7,14 @@
 
 <p>
   <strong>Product:</strong>
-  <%= @sale.product %>
+  <%  @sale.products.each do |product| %>
+    <li><%= product.name%></li>
+  <% end %>
 </p>
 
 <p>
   <strong>Client:</strong>
-  <%= @sale.client %>
+  <%= @sale.client.name %>
 </p>
 
 <p>
