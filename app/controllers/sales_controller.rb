@@ -24,7 +24,7 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    params[:sale][:product_ids] ||= []
+
     @sale = Sale.new(sale_params)
 
     respond_to do |format|
@@ -60,6 +60,15 @@ class SalesController < ApplicationController
       format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def products
+      params[:sale][:product_ids] ||= []
+
+      @sales = Sale.all
+      @products = Product.all
+
+      render :nested_products
   end
 
   private
