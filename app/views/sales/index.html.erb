@@ -2,7 +2,7 @@
 
 <h1>Listing Sales</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Value</th>
@@ -17,9 +17,10 @@
     <% @sales.each do |sale| %>
     <tr>
       <td><%= sale.value %></td>
-      <%  sale.products.each do |product| %>
-        <td><%= product.name%></td>
-      <% end %>
+      <td><%  sale.products.each do |product| %>
+       <li> <%= link_to product.name, product_path(product)  %></li> 
+      <% end %></td>
+      <%= sale.products.count %>
       <td><%= sale.client.name %></td>
       <td><%= sale.installments %></td>
       <td><%= link_to 'Show', sale %></td>
