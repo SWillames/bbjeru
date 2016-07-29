@@ -4,6 +4,7 @@ class CreateSales < ActiveRecord::Migration
       t.float :value
       t.references :client, index: true, foreign_key: true
       t.string :installments
+      t.string :description
 
       t.timestamps null: false
     end
