@@ -40,10 +40,8 @@ class SalesController < ApplicationController
     params[:sale][:product_ids] ||= []
       if @sale.update(sale_params)
         redirect_to @sale, notice: 'Sale was successfully updated.'
-        render :show, status: :ok, location: @sale
       else
         render :edit
-        render json: @sale.errors, status: :unprocessable_entity
       end
   end
 
@@ -54,13 +52,13 @@ class SalesController < ApplicationController
       redirect_to sales_url, notice: 'Sale was successfully destroyed.'
   end
 
-  def products
+=begin  def products
 
       @sales = Sale.all
       @products = Product.all
 
       render :nested_products
-  end
+=end
 
   private
     # Use callbacks to share common setup or constraints between actions.
