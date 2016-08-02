@@ -16,9 +16,9 @@
   <tbody>
     <% @sales.each do |sale| %>
     <tr>
-      <td><%= sale.value %></td>
+      <td><%= @total %></td>
       <td><%  sale.products.each do |product| %>
-       <li> <%= link_to product.name, product_path(product)  %></li> 
+      <li> <%= link_to product.name, product_path(product)  %></li>
       <% end %></td>
       <%= sale.products.count %>
       <td><%= sale.client.name %></td>
