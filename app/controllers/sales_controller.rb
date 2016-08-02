@@ -26,7 +26,7 @@ class SalesController < ApplicationController
   def create
 
     @sale = Sale.new(sale_params)
-    params[:sale][:product_ids] ||= []
+    @total = Sale.total
       if @sale.save
         redirect_to @sale, notice: 'Sale was successfully created.'
       else
@@ -68,6 +68,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:value,  :client_id, :installments, product_ids: [])
+      params.require(:sale).permit(:value, :client_id, :installments, product_ids: [])
     end
 end
