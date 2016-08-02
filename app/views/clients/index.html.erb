@@ -21,7 +21,10 @@
         <td><%= client.cpf %></td>
         <td><%= client.location %></td>
         <td><%= client.salary %></td>
-        <td><%= client.sales %></td>
+        <td><% client.sales.each do |sale| %>
+          <%= sale.value %></td>
+          <% end %>
+          <%= client.sales.count %>
         <td>
           <center>
             <%= link_to 'Show', client %>

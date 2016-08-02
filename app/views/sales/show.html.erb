@@ -2,7 +2,7 @@
 
 <p>
   <strong>Value:</strong>
-  <%= @sale.value %>
+  <%= @sale.products.sum(:price) %>
 </p>
 
 <p>
